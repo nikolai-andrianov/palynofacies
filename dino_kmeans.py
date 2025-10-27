@@ -1,5 +1,11 @@
 """
-Particles classification using DINO.
+Segment and analyze particles in an NDPI whole-slide image.
+
+Step 5: 
+    a. Read the images with segmented particles from data/<ndpi_stem>_level_<level>_below_thresh_<thresh>_embed_class_filter
+    b. Extract DINOv2 features from each image
+    c. Perform k-means clustering on the extracted features to categorize particles into N clusters 
+    d. Save the clustered images into data/<ndpi_stem>_level_<level>_below_thresh_<thresh>_embed_class_filter_clusters_dino
 
 Copyright 2025 Nikolai Andrianov, nia@geus.dk
 

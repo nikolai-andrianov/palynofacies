@@ -1,5 +1,10 @@
 """
-Segment and analyze particles in an NDPI whole-slide image using OpenCV and SAM2.
+Segment and analyze particles in an NDPI whole-slide image.
+
+Step 1: 
+    a. Segment particles using image processing techniques
+    b. Segment the particles using SAM2 
+    c. Save the segmented particles as individual images in data/<ndpi_stem>_level_<level>
 
 Copyright 2025 Nikolai Andrianov, nia@geus.dk
 
@@ -287,10 +292,10 @@ plotting = False
 verbose = False
 
 # Path to the NDPI file
-data_path = Path('../data')
+data_path = Path('../data/large')
 ndpi_file = "2025-06-18_10.23.51.ndpi"
 ndpi_file = "test.ndpi"
-#ndpi_file = "small.ndpi"
+ndpi_file = "large.ndpi"
 
 ndpi_stem = ndpi_file.split('.ndpi')[0]
 
@@ -386,7 +391,7 @@ nc1 = len(contours_1)
 print(f"Method 1: detected {nc1} particles")
 
 # Discard the contours which are within band_width pixels of the image border
-contours_2 = discard_contours_near_border(contours_1, opencv_image.shape, band_width)
+contours_1 = discard_contours_near_border(contours_1, opencv_image.shape, band_width)
 print(f"Method 1: after discarding {nc1 - len(contours_1)} contours near border, {len(contours_1)} particles remain")
 
 # # Draw green contours around detected particles
